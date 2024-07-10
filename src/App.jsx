@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   BrowserRouter as Router,
+  Navigate,
   Route,
   Routes,
 } from 'react-router-dom'
@@ -25,14 +26,30 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/order' element={<Order />} />
+          <Route path='/order' element={
+            <protectedRouteForUser>
+              <Order />
+            </protectedRouteForUser>
+          } />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/dashboard' element={
+            <protectedRouteForAdmin>
+              <Dashboard />
+            </protectedRouteForAdmin>
+          } />
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/productInfo/:id' element={<ProductInfo/>}/>
-          <Route path='/addProduct' element={<AddProduct/>}/>
-          <Route path='/updateProduct' element={<UpdateProduct/>}/>
+          <Route path='/addProduct' element={
+            <protectedRouteForAdmin>
+              <AddProduct/>
+            </protectedRouteForAdmin>
+          }/>
+          <Route path='/updateProduct' element={
+            <protectedRouteForAdmin>
+              <UpdateProduct/>
+            </protectedRouteForAdmin>
+          }/>
           <Route path='/*' element={<NoPage />} />
         </Routes>
         <ToastContainer/>
@@ -42,3 +59,21 @@ function App() {
 }
 
 export default App
+
+export const protectedRouteForUser = ({ children }) => {
+  if (localStorage.getItem('user')) {
+    return children
+  }
+  else {
+    return <Navigate to='/login' />
+  }
+}
+
+const protectedRouteForAdmin = ({children}) => {
+  const admin = JSON.parse(localStorage.getItem('user'))
+  if(admin.user.email === 'chintu12@gmail.com'){
+    return children
+  }else{
+    <Navigate to = {'/login'}/>
+  }
+}
