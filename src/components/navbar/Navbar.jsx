@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import myContext from "../../context/data/MyContext";
+import MyContext from "../../context/data/MyContext";
 import { BsFillCloudSunFill } from 'react-icons/bs'
 import { FiSun } from 'react-icons/fi'
 import { Link } from "react-router-dom";
@@ -12,11 +12,10 @@ import { RxCross2 } from 'react-icons/rx'
 function Navbar() {
     const [open, setOpen] = useState(false)
 
-    const context = useContext(myContext)
+    const context = useContext(MyContext)
     const { mode, toggleMode } = context
 
     const user = JSON.parse(localStorage.getItem('user'))
-    console.log(user.user.email)
 
     const logout = () => {
         localStorage.clear('user');
@@ -131,7 +130,7 @@ function Navbar() {
                             <div className="ml-4 flex lg:ml-0">
                                 <Link to={'/'} className='flex'>
                                     <div className="flex ">
-                                        <h1 className=' text-2xl font-bold text-black  px-2 py-1 rounded' style={{ color: mode === 'dark' ? 'white' : '', }}>E-Bharat</h1>
+                                        <h1 className=' text-2xl font-bold text-black  px-2 py-1 rounded' style={{ color: mode === 'dark' ? 'white' : '', }}>Online Shopping</h1>
                                     </div>
                                 </Link>
                             </div>
