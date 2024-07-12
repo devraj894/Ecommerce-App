@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Layout from '../../components/layout/Layout'
-import myContext from '../../context/data/myContext';
+import MyContext from '../../context/data/MyContext';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { addToCart } from '../../redux/cartSlice';
-import { fireDB } from '../../fireabase/FirebaseConfig';
+import { fireDB } from '../../firebase/FirebaseConfig';
 
 function ProductInfo() {
-    const context = useContext(myContext);
+    const context = useContext(MyContext);
     const { loading, setLoading } = context;
 
     const [products, setProducts] = useState('')
