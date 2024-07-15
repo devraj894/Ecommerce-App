@@ -44,6 +44,7 @@ function Signup() {
             setEmail("")
             setPassword("")
             setLoading(false)
+            localStorage.setItem('user', JSON.stringify(user))
             navigate('/')
 
         }catch(error){
