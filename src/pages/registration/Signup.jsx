@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { useContext } from 'react';
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import MyContext from '../../context/data/MyContext';
 import { auth, fireDB } from '../../firebase/FirebaseConfig'
@@ -16,6 +16,8 @@ function Signup() {
 
     const context = useContext(MyContext)
     const {loading, setLoading} = context
+
+    const navigate = useNavigate()
 
     const signup = async () => {
         setLoading(true)
@@ -42,6 +44,7 @@ function Signup() {
             setEmail("")
             setPassword("")
             setLoading(false)
+            navigate('/')
 
         }catch(error){
             console.log(error)
