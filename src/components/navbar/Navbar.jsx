@@ -25,6 +25,9 @@ function Navbar() {
 
   return (
     <div className='bg-white sticky top-0 z-50'>
+
+      {/* Native UI */}
+
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
           <Transition.Child
@@ -105,6 +108,8 @@ function Navbar() {
           </div>
         </Dialog>
       </Transition.Root>
+
+      {/* Web UI */}
 
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-pink-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8"

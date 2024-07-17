@@ -47,7 +47,6 @@ function Order() {
         (
           <div className='text-3xl text-center m-7'>You haven't placed any order yet.</div>
         )
-
       }
     </Layout>
   )

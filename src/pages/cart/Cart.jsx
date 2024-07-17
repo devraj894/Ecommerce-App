@@ -9,7 +9,6 @@ import { addDoc, collection } from 'firebase/firestore';
 import { fireDB } from '../../firebase/FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
 
-
 function Cart() {
 
   const context = useContext(MyContext)
@@ -47,7 +46,7 @@ function Cart() {
 
   /**========================================================================
    *!                           Payment Intigration
-   *========================================================================**/ 
+   *========================================================================**/
 
   const [name, setName] = useState("")
   const [address, setAddress] = useState("");
@@ -207,7 +206,7 @@ function Cart() {
             />
           </div>
         </div>
-      </div> :  <div className="bg-blue-100 flex flex-col items-center justify-center mb-11 mt-11">
+      </div> : <div className="bg-blue-100 flex flex-col items-center justify-center mb-11 mt-11">
         <h1 className='text-center mb-6 mt-7 p-5 text-4xl'>
           Login to your account to check cart details
         </h1>
