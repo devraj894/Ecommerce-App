@@ -7,6 +7,7 @@ import { deleteFromCart } from '../../redux/cartSlice';
 import { toast } from 'react-toastify';
 import { addDoc, collection } from 'firebase/firestore';
 import { fireDB } from '../../firebase/FirebaseConfig';
+import { useNavigate } from 'react-router-dom';
 
 
 function Cart() {
@@ -133,9 +134,22 @@ function Cart() {
 
 
   }
+
+  const user = JSON.parse(localStorage.getItem('user'))
+
+  const navigate = useNavigate()
+
+  const loginHandler = () => {
+    navigate('/login')
+  }
+
+  const sigupHandler = () => {
+    navigate('/signup')
+  }
+
   return (
     <Layout >
-      <div className="h-screen bg-gray-100 pt-5 mb-[60%] " style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }}>
+      {user ? <div className="h-screen bg-gray-100 pt-5 mb-[60%] " style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }}>
         <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0 ">
           <div className="rounded-lg md:w-2/3 ">
@@ -193,7 +207,19 @@ function Cart() {
             />
           </div>
         </div>
-      </div>
+      </div> :  <div className="bg-blue-100 flex flex-col items-center justify-center mb-11 mt-11">
+        <h1 className='text-center mb-6 mt-7 p-5 text-4xl'>
+          Login to your account to check cart details
+        </h1>
+        <div className="flex space-x-4">
+          <button onClick={loginHandler} className='bg-purple-900 hover:bg-blue-400 text-white font-bold py-2 px-4 border border-blue-700 rounded'>
+            Login
+          </button>
+          <button onClick={sigupHandler} className='bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-4 border border-green-700 rounded'>
+            Sign Up
+          </button>
+        </div>
+      </div>}
     </Layout>
   )
 }

@@ -7,6 +7,7 @@ function Order() {
   const userid = JSON.parse(localStorage.getItem('user')).user.uid
   const context = useContext(MyContext)
   const { mode, loading, order } = context
+
   return (
     <Layout>
       {loading && <Loader />}
@@ -44,7 +45,7 @@ function Order() {
         </>)
         :
         (
-          <h2 className=' text-center tex-2xl text-white'>Not Order</h2>
+          <div className='text-3xl text-center m-7'>You haven't placed any order yet.</div>
         )
 
       }
