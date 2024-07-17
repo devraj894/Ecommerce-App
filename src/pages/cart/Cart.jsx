@@ -208,7 +208,7 @@ function Cart() {
         </div>
       </div> : <div className="bg-blue-100 flex flex-col items-center justify-center mb-11 mt-11">
         <h1 className='text-center mb-6 mt-7 p-5 text-4xl'>
-          Login to your account to check cart details
+          Please log in to check your cart details.
         </h1>
         <div className="flex space-x-4">
           <button onClick={loginHandler} className='bg-purple-900 hover:bg-blue-400 text-white font-bold py-2 px-4 border border-blue-700 rounded'>
